@@ -19,6 +19,8 @@
 */
 const navbar = document.getElementById('navbar__list');
 const allSections = document.querySelectorAll('section');
+// To top button
+const toTop = document.querySelector('.to__top__btn');
 // Height of the window
 const windHeight = window.innerHeight;
 
@@ -100,6 +102,8 @@ const setActiveSection = () => {
 	    removeClass(navItem, 'menu__link__active');
 	  }
 	}
+	// Show to top btn when scroll below the fold of the page
+  window.pageYOffset > windHeight / 2 ? addClass(toTop, 'show__btn') : removeClass(toTop, 'show__btn');
 };
 
 // Scroll to anchor ID using scrollTO event
@@ -122,6 +126,13 @@ const scrollToSection = evt => {
   }
 };
 
+// Scroll to top
+const scrollToTop = () => {
+	window.scrollTo({
+		top: 0,
+		behavior:'smooth'
+	});
+};
 /**
  * End Main Functions
  * Begin Events
@@ -134,7 +145,8 @@ buildMenu(navbar, allSections);
 navbar.addEventListener('click', scrollToSection);
 // Set sections as active
 document.addEventListener('scroll', setActiveSection);
-
+// Scroll to top on to-top btn click
+toTop.addEventListener('click', scrollToTop);
 
 
 

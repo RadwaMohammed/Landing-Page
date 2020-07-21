@@ -110,7 +110,37 @@ section {
     color: #fff;
 }
 
+/* Button To Top Styles */
+.to__top__btn {
+    visibility: hidden;
+    opacity: 0;
+    transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+    position: fixed;
+    bottom: 30px;
+    right: 18px;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #333;
+    font-size: 1.5em;
+    line-height: 48px;
+    transition: ease 0.3s all;
+}
 
+.to__top__btn:hover,
+.to__top__btn:focus {
+    background-color: #333;
+    color: #fff;
+}
+
+.show__btn {
+    opacity: 1;
+    visibility: visible;
+}
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
@@ -123,7 +153,9 @@ section {
         max-width: 50em;
         padding: 4em;
     }
+
 }
+
 
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
