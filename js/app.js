@@ -103,7 +103,24 @@ const setActiveSection = () => {
 };
 
 // Scroll to anchor ID using scrollTO event
-
+/*
+* Listener function to the click event of each anchor in the nave menu
+* Event delegation using (evt) - Event object and its (target) property to avoid many events
+*/
+const scrollToSection = evt => {
+	// Using (nodeName) property to verify target is the desired element
+	if (evt.target.nodeName === 'A') {
+		// Prevent the default action from occurring
+		evt.preventDefault();
+		// The targeted section id
+    const anchorId = evt.target.getAttribute('href');
+    // Using scrollTo event to scroll smoothly to the targeted section
+    window.scrollTo({
+    	top: document.querySelector(anchorId).offsetTop,
+    	behavior: 'smooth'
+    });
+  }
+};
 
 /**
  * End Main Functions
@@ -114,7 +131,7 @@ const setActiveSection = () => {
 // Build menu
 buildMenu(navbar, allSections);
 // Scroll to section on link click
-
+navbar.addEventListener('click', scrollToSection);
 // Set sections as active
 document.addEventListener('scroll', setActiveSection);
 
