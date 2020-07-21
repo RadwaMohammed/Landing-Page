@@ -19,13 +19,37 @@
 */
 const navbar = document.getElementById('navbar__list');
 const allSections = document.querySelectorAll('section');
+// Height of the window
+const windHeight = window.innerHeight;
 
 /**
  * End Global Variables
  * Start Helper Functions
  *
 */
+// Adding class(es) to an element
+const addClass = (elem, ...classToAdd) => {
+  const styles = [...classToAdd];
+  for (const style of styles) {
+    elem.classList.add(style);
+  }
+};
 
+// Removing class(es) from an element
+const removeClass = (elem, ...classToRemove) => {
+  const styles = [...classToRemove];
+  for (const style of styles) {
+    elem.classList.remove(style);
+  }
+};
+
+// Check if the element in the viewport
+const isInViewport = elem => {
+	// Get the element top coordinate
+  const topBoundary = elem.getBoundingClientRect().top;
+  // 0.4 works good without overlapping sections
+  return topBoundary < windHeight * 0.4 && topBoundary > windHeight * -0.4  ;
+};
 
 
 /**
@@ -60,7 +84,16 @@ const buildMenu = (menuList, sections) => {
 };
 
 // Add class 'active' to section when near top of viewport
-
+const setActiveSection = () => {
+	for (const section of allSections) {
+		if (isInViewport(section)) {
+			// Add style to section to be clear it is in the viewport
+	    addClass(section, 'your-active-class');
+	  } else {
+	    removeClass(section, 'your-active-class');
+	  }
+	}
+};
 
 // Scroll to anchor ID using scrollTO event
 
@@ -76,5 +109,8 @@ buildMenu(navbar, allSections);
 // Scroll to section on link click
 
 // Set sections as active
+document.addEventListener('scroll', setActiveSection);
+
+
 
 
