@@ -19,10 +19,14 @@
 */
 const navbar = document.getElementById('navbar__list');
 const allSections = document.querySelectorAll('section');
+// Header containing navbar
+const header = document.querySelector('.page__header');
 // To top button
 const toTop = document.querySelector('.to__top__btn');
 // Height of the window
 const windHeight = window.innerHeight;
+// Used for setTimeout Id
+let scrollTimer = null;
 
 /**
  * End Global Variables
@@ -133,6 +137,28 @@ const scrollToTop = () => {
 		behavior:'smooth'
 	});
 };
+
+// Hide fixed navigation bar while not scrolling
+/*
+* Set a timer in scroll event
+* If another scroll event fired then reset the timer
+* When the timer fire, then it is supposed that scrolling has stopped
+*/
+const hideNav = () => {
+	if(scrollTimer !== null) {
+		// Reset the timer
+    clearTimeout(scrollTimer);
+    removeClass(header, 'hide__header');
+  }
+  scrollTimer = setTimeout(() => {
+  	// Hide navbar when not scrolling
+  	addClass(header, 'hide__header');
+  	// Show navbar when on the top of page and before reach sections
+  	if (window.pageYOffset < windHeight * 0.4) {
+  		removeClass(header, 'hide__header')
+  	};
+  }, 1000);
+};
 /**
  * End Main Functions
  * Begin Events
@@ -143,10 +169,14 @@ const scrollToTop = () => {
 buildMenu(navbar, allSections);
 // Scroll to section on link click
 navbar.addEventListener('click', scrollToSection);
-// Set sections as active
-document.addEventListener('scroll', setActiveSection);
 // Scroll to top on to-top btn click
 toTop.addEventListener('click', scrollToTop);
-
-
-
+// Event for scroll and using a delay to reduce the frequency of scrolling events fired
+setTimeout( () => {
+	document.addEventListener('scroll', () => {
+  	// Set sections as active
+    setActiveSection();
+    // Hide nav while not scrolling
+    hideNav();
+  });
+}, 500);

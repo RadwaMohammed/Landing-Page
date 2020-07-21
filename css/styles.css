@@ -97,6 +97,11 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+    transition: ease 0.7s all;
+}
+
+.hide__header:not(:hover) {
+    top: -100px;
 }
 
 /* Footer Styles */
