@@ -86,11 +86,18 @@ const buildMenu = (menuList, sections) => {
 // Add class 'active' to section when near top of viewport
 const setActiveSection = () => {
 	for (const section of allSections) {
+		// Section Id
+		const sectionId = section.getAttribute('id');
+		// The nav item that links to the section id
+		const navItem = document.querySelector(`a[href="#${sectionId}"]`);
 		if (isInViewport(section)) {
 			// Add style to section to be clear it is in the viewport
 	    addClass(section, 'your-active-class');
+	    // Add style to the nav item correspond to the section in the viewport
+	    addClass(navItem, 'menu__link__active');
 	  } else {
 	    removeClass(section, 'your-active-class');
+	    removeClass(navItem, 'menu__link__active');
 	  }
 	}
 };
