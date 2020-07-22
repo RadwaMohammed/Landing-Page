@@ -17,7 +17,9 @@
  * Define Global Variables
  *
 */
+// Navigation bar
 const navbar = document.getElementById('navbar__list');
+// All Sections in the document
 const allSections = document.querySelectorAll('section');
 // Header containing navbar
 const header = document.querySelector('.page__header');
@@ -57,7 +59,6 @@ const isInViewport = elem => {
   return topBoundary < windHeight * 0.4 && topBoundary > windHeight * -0.4  ;
 };
 
-
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -78,11 +79,12 @@ const buildMenu = (menuList, sections) => {
 		// ID of each section used for the anchor
 		const sectionId = section.id;
 		// Dataset used to populate li
-		const itemContent = section.dataset.nav;
+		const content = section.dataset.nav;
 		// Create li element
     const listItem = document.createElement('li');
-    // Using sectionID so the link scroll to the appropriate section
-    listItem.innerHTML = `<a class="menu__link" href="#${sectionId}">${itemContent}</a>`;
+    // Anchor element for list item
+    const anchorElem = `<a class="menu__link" href="#${sectionId}">${content}</a>`;
+    listItem.innerHTML = anchorElem;
     fragment.appendChild(listItem);
 	}
 	menuList.appendChild(fragment);
@@ -98,22 +100,25 @@ const setActiveSection = () => {
 		const navItem = document.querySelector(`a[href="#${sectionId}"]`);
 		if (isInViewport(section)) {
 			// Add style to section to be clear it is in the viewport
-	    addClass(section, 'your-active-class');
+	    addClass(section, 'active');
 	    // Add style to the nav item correspond to the section in the viewport
 	    addClass(navItem, 'menu__link__active');
 	  } else {
-	    removeClass(section, 'your-active-class');
+	    removeClass(section, 'active');
 	    removeClass(navItem, 'menu__link__active');
 	  }
 	}
 	// Show to top btn when scroll below the fold of the page
-  window.pageYOffset > windHeight / 2 ? addClass(toTop, 'show__btn') : removeClass(toTop, 'show__btn');
+  window.pageYOffset > windHeight / 2 ?
+  	addClass(toTop, 'show__btn')
+  	: removeClass(toTop, 'show__btn');
 };
 
 // Scroll to anchor ID using scrollTO event
 /*
 * Listener function to the click event of each anchor in the nave menu
-* Event delegation using (evt) - Event object and its (target) property to avoid many events
+* Event delegation using (evt) - Event object and its (target) property
+* to avoid many events
 */
 const scrollToSection = evt => {
 	// Using (nodeName) property to verify target is the desired element
@@ -156,22 +161,27 @@ const hideNav = () => {
   	// Show navbar when on the top of page and before reach sections
   	if (window.pageYOffset < windHeight * 0.4) {
   		removeClass(header, 'hide__header')
-  	};
+  	}
   }, 1000);
 };
+
 /**
  * End Main Functions
  * Begin Events
  *
 */
-
 // Build menu
 buildMenu(navbar, allSections);
+
 // Scroll to section on link click
 navbar.addEventListener('click', scrollToSection);
+
 // Scroll to top on to-top btn click
 toTop.addEventListener('click', scrollToTop);
-// Event for scroll and using a delay to reduce the frequency of scrolling events fired
+
+/* Event for scroll and using a delay
+ * to reduce the frequency of scrolling events fired
+*/
 setTimeout( () => {
 	document.addEventListener('scroll', () => {
   	// Set sections as active
