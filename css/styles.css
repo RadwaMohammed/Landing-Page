@@ -32,7 +32,7 @@ body {
 h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
-    margin: 2em 1rem;
+    margin: 3em 1rem 1em;
     text-align: center;
 }
 
@@ -88,10 +88,6 @@ section {
     font-size: 1rem;
 }
 
-.navbar__menu li {
-
-}
-
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
@@ -99,9 +95,20 @@ section {
     text-decoration: none;
     color: #000;
 }
- @media screen and (max-width: 26em) {
+ @media screen and (max-width: 27em) {
     .navbar__menu ul {
         font-size: 0.85rem;
+    }
+
+    h2 {
+        font-size: 2.6em;
+        color: #cc1;
+        text-align: center;
+    }
+
+    main section:nth-of-type(n) .landing__container {
+        text-align: center;
+        margin: auto;
     }
  }
 /* Add menu__link__active class for the active link state */
