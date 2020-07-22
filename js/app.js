@@ -56,7 +56,7 @@ const isInViewport = elem => {
 	// Get the element top coordinate
   const topBoundary = elem.getBoundingClientRect().top;
   // 0.4 works good without overlapping sections
-  return topBoundary < windHeight * 0.4 && topBoundary > windHeight * -0.4  ;
+  return topBoundary < windHeight * 0.4 && topBoundary > windHeight * -0.6  ;
 };
 
 /**
@@ -189,4 +189,4 @@ setTimeout( () => {
     // Hide nav while not scrolling
     hideNav();
   });
-}, 500);
+}, 10);
