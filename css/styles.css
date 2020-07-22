@@ -1,4 +1,11 @@
 /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+/*
  *
  * CSS written based on SMACSS architecture.
  * To learn more, visit: http://smacss.com/
@@ -12,6 +19,8 @@
 /* ---- Base Rules ---- */
 body {
     background: rgb(3,28,115);
+    background: -webkit-gradient(linear, left bottom, left top, from(rgb(121,175,154)), to(rgb(3,28,115)));
+    background: -o-linear-gradient(bottom, rgb(121,175,154) 0%, rgb(3,28,115) 100%);
     background: linear-gradient(0deg, rgb(121,175,154) 0%, rgb(3,28,115) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
@@ -69,8 +78,12 @@ section {
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     list-style: none;
     font-size: 1rem;
 }
@@ -96,6 +109,8 @@ section {
 .navbar__menu .menu__link__active {
     background: #333;
     color: #fff;
+    -webkit-transition: ease 0.1s all;
+    -o-transition: ease 0.1s all;
     transition: ease 0.1s all;
 }
 
@@ -106,6 +121,8 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+    -webkit-transition: ease 0.7s all;
+    -o-transition: ease 0.7s all;
     transition: ease 0.7s all;
 }
 
@@ -134,6 +151,8 @@ section {
 .to__top__btn {
     visibility: hidden;
     opacity: 0;
+    -webkit-transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+    -o-transition:visibility 0s linear 0.5s,opacity 0.5s linear;
     transition:visibility 0s linear 0.5s,opacity 0.5s linear;
     position: fixed;
     bottom: 30px;
@@ -149,6 +168,8 @@ section {
     font-weight: bold;
     font-size: 1.5em;
     line-height: 46px;
+    -webkit-transition: ease 0.3s all;
+    -o-transition: ease 0.3s all;
     transition: ease 0.3s all;
 }
 
@@ -184,7 +205,8 @@ section {
 }
 
 section {
-    filter: grayscale(80%);
+    -webkit-filter: grayscale(80%);
+            filter: grayscale(80%);
 }
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
@@ -204,12 +226,16 @@ section:nth-of-type(odd) .landing__container::before {
     height: 20vh;
     border-radius: 50%;
     opacity: 0;
+    -webkit-transition: ease 0.5s all;
+    -o-transition: ease 0.5s all;
     transition: ease 0.5s all;
 }
 
 section:nth-of-type(even) .landing__container::before {
     content: '';
     background: rgb(255,255,255);
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255,255,255,.1)), to(rgba(255,255,255,.2)));
+    background: -o-linear-gradient(bottom, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     position: absolute;
     top: 3em;
@@ -219,12 +245,16 @@ section:nth-of-type(even) .landing__container::before {
     height: 10vh;
     border-radius: 50%;
     opacity: 0;
+    -webkit-transition: ease 0.5s all;
+    -o-transition: ease 0.5s all;
     transition: ease 0.5s all;
 }
 
 section:nth-of-type(3n) .landing__container::after {
     content: '';
     background: rgb(255,255,255);
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255,255,255,.1)), to(rgba(255,255,255,.2)));
+    background: -o-linear-gradient(bottom, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     position: absolute;
     right: 0;
@@ -234,12 +264,16 @@ section:nth-of-type(3n) .landing__container::after {
     height: 10vh;
     border-radius: 50%;
     opacity: 0;
+    -webkit-transition: ease 0.5s all;
+    -o-transition: ease 0.5s all;
     transition: ease 0.5s all;
 }
 
 section:nth-of-type(3n + 1) .landing__container::after {
     content: '';
     background: rgb(255,255,255);
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255,255,255,.1)), to(rgba(255,255,255,.2)));
+    background: -o-linear-gradient(bottom, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
     position: absolute;
     right: 20vw;
@@ -249,6 +283,8 @@ section:nth-of-type(3n + 1) .landing__container::after {
     height: 15vh;
     border-radius: 50%;
     opacity: 0;
+    -webkit-transition: ease 0.5s all;
+    -o-transition: ease 0.5s all;
     transition: ease 0.5s all;
 }
 
@@ -256,14 +292,18 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 section.active {
-    filter: none;
+    -webkit-filter: none;
+            filter: none;
     background: rgb(0, 0, 0);
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 section.active .landing__container::before {
     opacity: 1;
-    animation: rotate 4s linear 0s infinite forwards;
+    -webkit-animation: rotate 4s linear 0s infinite forwards;
+            animation: rotate 4s linear 0s infinite forwards;
 }
 
 section.active .landing__container::after {
@@ -272,15 +312,39 @@ section.active .landing__container::after {
 }
 
 /* Section Active Styles Keyframe Animations */
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg)
+                   translate(-1em)
+                   rotate(0deg);
+                transform: rotate(0deg)
+                   translate(-1em)
+                   rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+                   translate(-1em)
+                   rotate(-360deg);
+                transform: rotate(360deg)
+                   translate(-1em)
+                   rotate(-360deg);
+    }
+}
 @keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg)
-		           translate(-1em)
-		           rotate(-360deg);
-	}
+    from {
+        -webkit-transform: rotate(0deg)
+                   translate(-1em)
+                   rotate(0deg);
+                transform: rotate(0deg)
+                   translate(-1em)
+                   rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+                   translate(-1em)
+                   rotate(-360deg);
+                transform: rotate(360deg)
+                   translate(-1em)
+                   rotate(-360deg);
+    }
 }
