@@ -11,8 +11,8 @@
 
 /* ---- Base Rules ---- */
 body {
-    background: rgb(136,203,171);
-    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    background: rgb(3,28,115);
+    background: linear-gradient(0deg, rgb(121,175,154) 0%, rgb(3,28,115) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
@@ -24,6 +24,7 @@ h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
     margin: 2em 1rem;
+    text-align: center;
 }
 
 @media only screen and (min-width: 35em){
@@ -34,10 +35,11 @@ h1 {
 }
 
 h2 {
-    border-bottom: 1px solid #cc1;
+    border-bottom: 1px dashed #fff;
     font-family: 'Oxygen', Sans-Serif;
     font-size: 3em;
-    color: #fff;
+    color: #cc1;
+    padding-bottom: 0.2em;
 }
 
 p {
@@ -67,11 +69,14 @@ section {
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    font-size: 1rem;
 }
 
 .navbar__menu li {
-    display: inline-block;
+
 }
 
 .navbar__menu .menu__link {
@@ -81,7 +86,11 @@ section {
     text-decoration: none;
     color: #000;
 }
-
+ @media screen and (max-width: 26em) {
+    .navbar__menu ul {
+        font-size: 0.85rem;
+    }
+ }
 /* Add menu__link__active class for the active link state */
 .navbar__menu .menu__link:hover,
 .navbar__menu .menu__link__active {
@@ -114,6 +123,11 @@ section {
 .page__footer p {
     color: #fff;
     text-align: center;
+    font-size: 0.8rem;
+}
+
+.page__footer span {
+    color: #cc1;
 }
 
 /* Button To Top Styles */
@@ -123,23 +137,24 @@ section {
     transition:visibility 0s linear 0.5s,opacity 0.5s linear;
     position: fixed;
     bottom: 30px;
-    right: 18px;
+    right: 3px;
     outline: none;
     border-radius: 50%;
     cursor: pointer;
-    width: 44px;
-    height: 44px;
-    border: 1px solid #333;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #cc1;
     background-color: #fff;
-    color: #333;
+    color: #cc1;
+    font-weight: bold;
     font-size: 1.5em;
-    line-height: 48px;
+    line-height: 46px;
     transition: ease 0.3s all;
 }
 
 .to__top__btn:hover,
 .to__top__btn:focus {
-    background-color: #333;
+    background-color: #cc1;
     color: #fff;
 }
 
@@ -150,7 +165,7 @@ section {
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
-    padding: 1em;
+    padding: 1.9em;
     text-align: left;
 }
 
@@ -160,9 +175,17 @@ section {
         padding: 4em;
     }
 
+    .to__top__btn {
+        right: 18px;
+        width: 46px;
+        height: 46px;
+        line-height: 48px;
+    }
 }
 
-
+section {
+    filter: grayscale(80%);
+}
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
@@ -233,8 +256,9 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 section.active {
+    filter: none;
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 section.active .landing__container::before {
